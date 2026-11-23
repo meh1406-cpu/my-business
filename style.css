@@ -1,0 +1,1317 @@
+/* ============================================================
+   الفارس للسيارات — ملف التنسيق المشترك
+   عربي RTL كامل باستخدام الخصائص المنطقية (logical properties)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --gold: #C9A227;
+    --gold-light: #E3C45B;
+    --gold-deep: #927516;
+    --ink: #16140F;
+    --ink-soft: #211E17;
+    --cream: #F7F4EC;
+    --paper: #FFFFFF;
+    --muted: #625B50;
+    --line: rgba(201, 162, 39, 0.28);
+    --shadow: 0 18px 44px rgba(22, 20, 15, 0.09);
+    --radius: 18px;
+    --max-width: 1180px;
+    --header-height: 74px;
+}
+
+/* ---------- أساسيات ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-block-start: calc(var(--header-height) + 18px);
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.85;
+    background-color: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    margin-block: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.35;
+    margin-block-start: 0;
+}
+
+p {
+    margin-block-start: 0;
+}
+
+.container {
+    inline-size: min(100% - 2.5rem, var(--max-width));
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    inset-block-start: -100px;
+    inset-inline-start: 1rem;
+    z-index: 200;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.65rem 1.1rem;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.skip-link:focus {
+    inset-block-start: 1rem;
+}
+
+/* ---------- أزرار ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border: 2px solid transparent;
+    transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn--primary {
+    background: var(--gold);
+    color: var(--ink);
+    box-shadow: 0 10px 26px rgba(201, 162, 39, 0.28);
+}
+
+.btn--primary:hover {
+    background: var(--gold-light);
+}
+
+.btn--outline {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: transparent;
+}
+
+.btn--outline:hover {
+    background: var(--gold);
+    color: var(--ink);
+}
+
+.btn--dark {
+    background: var(--ink);
+    color: var(--gold-light);
+}
+
+.btn--dark:hover {
+    background: var(--ink-soft);
+}
+
+/* ---------- الترويسة والتنقل ---------- */
+.site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 90;
+    background: rgba(22, 20, 15, 0.97);
+    border-block-end: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-block-size: var(--header-height);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+}
+
+.brand-mark {
+    inline-size: 46px;
+    block-size: 46px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(140deg, var(--gold-light), var(--gold-deep));
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 1.35rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.brand-name {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.12rem;
+}
+
+.brand-sub {
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav a {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 0.95rem;
+    border-radius: 10px;
+    color: #E8E2D6;
+    font-weight: 700;
+    font-size: 0.94rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+    color: var(--gold-light);
+    background: rgba(201, 162, 39, 0.12);
+}
+
+.nav a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0.95rem;
+    inset-block-end: 0.28rem;
+    block-size: 2px;
+    border-radius: 2px;
+    background: var(--gold);
+}
+
+.header-cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+}
+
+.mobile-menu {
+    display: none;
+    position: relative;
+}
+
+.mobile-menu summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 11px;
+    border: 1px solid var(--line);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.hamburger {
+    inline-size: 18px;
+    block-size: 14px;
+    display: grid;
+    gap: 3px;
+}
+
+.hamburger span {
+    display: block;
+    block-size: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.mobile-links {
+    position: absolute;
+    inset-block-start: calc(100% + 0.7rem);
+    inset-inline-end: 0;
+    z-index: 95;
+    min-inline-size: 210px;
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--ink-soft);
+    box-shadow: var(--shadow);
+}
+
+.mobile-links a {
+    padding: 0.6rem 0.8rem;
+    border-radius: 9px;
+    color: #E8E2D6;
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+.mobile-links a:hover,
+.mobile-links a[aria-current="page"] {
+    color: var(--gold-light);
+    background: rgba(201, 162, 39, 0.14);
+}
+
+/* ---------- أقسام عامة ---------- */
+.section {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.section--paper {
+    background: var(--paper);
+}
+
+.section--dark {
+    background: var(--ink);
+    color: #fff;
+}
+
+.section-head {
+    max-inline-size: 44rem;
+    margin-block-end: 2.3rem;
+}
+
+.section-head--center {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold-deep);
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.section-kicker::before {
+    content: "";
+    inline-size: 26px;
+    block-size: 2px;
+    background: currentColor;
+}
+
+.section--dark .section-kicker {
+    color: var(--gold-light);
+}
+
+.section-title {
+    margin-block: 0.55rem 0.8rem;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    font-weight: 800;
+}
+
+.section-lead {
+    color: var(--muted);
+    margin-block-end: 0;
+}
+
+.section--dark .section-lead {
+    color: #C8C1B4;
+}
+
+.grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ---------- الواجهة الرئيسية ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(201, 162, 39, 0.18), transparent 42%),
+        linear-gradient(135deg, #1B1811 0%, #100F0C 72%);
+    border-block-end: 1px solid var(--line);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+.hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--gold-light);
+    font-weight: 800;
+    font-size: 0.88rem;
+}
+
+.eyebrow::before {
+    content: "";
+    inline-size: 28px;
+    block-size: 2px;
+    background: currentColor;
+}
+
+.hero h1 {
+    margin-block: 0.8rem 1rem;
+    font-size: clamp(2.1rem, 5.2vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.28;
+}
+
+.hero h1 span {
+    color: var(--gold-light);
+}
+
+.hero-lead {
+    max-inline-size: 35rem;
+    color: #CDC6B8;
+    font-size: 1.05rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-block-start: 1.8rem;
+}
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-block-start: 1.6rem;
+    color: #AFA796;
+    font-size: 0.88rem;
+}
+
+.hero-note span {
+    color: var(--gold-light);
+    font-weight: 800;
+}
+
+.hero-visual {
+    position: relative;
+    padding: 0.9rem;
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 72%;
+    block-size: 72%;
+    border: 1px solid var(--gold);
+    border-radius: 22px;
+    opacity: 0.75;
+}
+
+.hero-visual img {
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 4 / 3.4;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero-badge {
+    position: absolute;
+    inset-block-end: -0.9rem;
+    inset-inline-start: -0.6rem;
+    display: grid;
+    gap: 0;
+    padding: 0.8rem 1.15rem;
+    border-radius: 14px;
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+.hero-badge small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* ---------- المميزات ---------- */
+.feature {
+    position: relative;
+    overflow: hidden;
+    padding: 1.9rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 48px rgba(22, 20, 15, 0.14);
+}
+
+.feature::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 4px;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold-light));
+}
+
+.feature-icon {
+    inline-size: 54px;
+    block-size: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: rgba(201, 162, 39, 0.13);
+    color: var(--gold-deep);
+    margin-block-end: 1.1rem;
+}
+
+.feature-icon svg {
+    inline-size: 26px;
+    block-size: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.feature h3 {
+    margin-block-end: 0.55rem;
+    font-size: 1.25rem;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.link-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-block-start: 0.3rem;
+    color: var(--gold-deep);
+    font-weight: 800;
+    font-size: 0.92rem;
+}
+
+.link-more:hover {
+    color: var(--ink);
+}
+
+/* ---------- معرض الصور ---------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 15px;
+    background: #000;
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-item--wide {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    transition: transform 0.55s ease, opacity 0.35s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.07);
+    opacity: 0.88;
+}
+
+.gallery-item figcaption {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    padding: 2.6rem 0.9rem 0.85rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ---------- الآراء ---------- */
+.review {
+    padding: 1.7rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.review-stars {
+    color: var(--gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.16rem;
+}
+
+.review blockquote {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    font-size: 0.96rem;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-block-start: 1.2rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--line);
+}
+
+.avatar {
+    inline-size: 44px;
+    block-size: 44px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--gold-light);
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.review-author strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.review-author small {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+/* ---------- لافتة دعائية ---------- */
+.cta-band {
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    color: #fff;
+    background: linear-gradient(120deg, #17150F, #282215);
+    border-block: 1px solid var(--line);
+}
+
+.cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-inner h2 {
+    margin-block-end: 0.35rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.cta-inner p {
+    margin-block-end: 0;
+    color: #C8C1B4;
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+/* ---------- رأس صفحات الموقع ---------- */
+.page-banner {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(201, 162, 39, 0.16), transparent 45%),
+        linear-gradient(130deg, #1B1811, #100F0C);
+    border-block-end: 1px solid var(--line);
+}
+
+.page-banner h1 {
+    margin-block: 0.4rem 0.6rem;
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+}
+
+.page-banner p {
+    max-inline-size: 42rem;
+    margin-block-end: 0;
+    color: #CDC6B8;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- صفحة الخدمات ---------- */
+.services-layout {
+    display: grid;
+    grid-template-columns: 235px minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.service-nav {
+    position: sticky;
+    inset-block-start: calc(var(--header-height) + 1.4rem);
+    padding: 1.1rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.service-nav h2 {
+    margin-block-end: 0.75rem;
+    font-size: 1rem;
+}
+
+.service-nav ul {
+    list-style: none;
+    padding-inline-start: 0;
+    display: grid;
+    gap: 0.25rem;
+}
+
+.service-nav a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+    border-inline-start: 3px solid transparent;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.service-nav a:hover {
+    color: var(--gold-deep);
+    background: rgba(201, 162, 39, 0.1);
+    border-inline-start-color: var(--gold);
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 245px;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    margin-block-end: 1.4rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    scroll-margin-block-start: calc(var(--header-height) + 1.2rem);
+}
+
+.service-card:target {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2), var(--shadow);
+}
+
+.service-number {
+    display: inline-block;
+    color: var(--gold-deep);
+    font-weight: 800;
+    font-size: 0.82rem;
+    margin-block-end: 0.3rem;
+}
+
+.service-card h3 {
+    margin-block-end: 0.6rem;
+    font-size: 1.4rem;
+}
+
+.service-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.service-points {
+    list-style: none;
+    padding-inline-start: 0;
+    display: grid;
+    gap: 0.4rem;
+    margin-block: 1rem 1.2rem;
+}
+
+.service-points li {
+    position: relative;
+    padding-inline-start: 1.55rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.service-points li::before {
+    content: "✓";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    color: var(--gold-deep);
+    font-weight: 800;
+}
+
+.service-card img {
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 210px;
+    object-fit: cover;
+    border-radius: 13px;
+    border: 1px solid var(--line);
+}
+
+.service-pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-block-start: 1.1rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--line);
+}
+
+.service-pager a {
+    color: var(--gold-deep);
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.service-pager a:hover {
+    color: var(--ink);
+}
+
+.service-pager span {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+/* ---------- صفحة عنّا ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.about-figure {
+    position: relative;
+    isolation: isolate;
+    margin: 0;
+}
+
+.about-figure img {
+    inline-size: 100%;
+    aspect-ratio: 4 / 4.4;
+    object-fit: cover;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.about-figure::before {
+    content: "";
+    position: absolute;
+    inset-block-end: -0.85rem;
+    inset-inline-end: -0.85rem;
+    inline-size: 58%;
+    block-size: 58%;
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+.about-content p {
+    color: var(--muted);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.stat {
+    padding: 1.4rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    color: var(--gold-deep);
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    line-height: 1.3;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.values-list {
+    list-style: none;
+    padding-inline-start: 0;
+    display: grid;
+    gap: 0.9rem;
+    margin-block-start: 1.3rem;
+}
+
+.values-list li {
+    position: relative;
+    padding-inline-start: 2rem;
+    color: var(--muted);
+}
+
+.values-list li::before {
+    content: "◆";
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--gold);
+}
+
+.values-list strong {
+    color: var(--ink);
+}
+
+/* ---------- صفحة تواصل ---------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.contact-card {
+    padding: 1.6rem;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.contact-card .feature-icon {
+    margin-block-end: 0.9rem;
+}
+
+.contact-card h2 {
+    margin-block-end: 0.45rem;
+    font-size: 1.15rem;
+}
+
+.contact-card p,
+.contact-card a {
+    color: var(--muted);
+    font-size: 0.94rem;
+}
+
+.contact-card a:hover {
+    color: var(--gold-deep);
+}
+
+.contact-details {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding-block: 0.7rem;
+    border-block-end: 1px solid var(--line);
+}
+
+.detail-row:last-child {
+    border-block-end: 0;
+}
+
+.detail-icon {
+    inline-size: 38px;
+    block-size: 38px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(201, 162, 39, 0.13);
+    color: var(--gold-deep);
+}
+
+.detail-icon svg {
+    inline-size: 19px;
+    block-size: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.detail-row strong {
+    display: block;
+    font-size: 0.94rem;
+}
+
+.detail-row span,
+.detail-row a {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.service-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.service-shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 13px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    font-weight: 800;
+    font-size: 0.92rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.service-shortcut:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+}
+
+.service-shortcut small {
+    color: var(--gold-deep);
+    font-size: 1.1rem;
+}
+
+/* ---------- التذييل ---------- */
+.site-footer {
+    padding-block: 3rem 1.4rem;
+    color: #C9C2B5;
+    background: #0D0C0A;
+    border-block-start: 1px solid var(--line);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.15fr;
+    gap: 2rem;
+}
+
+.footer-about p {
+    font-size: 0.9rem;
+    margin-block: 1rem 0;
+}
+
+.footer-title {
+    color: #fff;
+    font-size: 1rem;
+    margin-block-end: 1rem;
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding-inline-start: 0;
+    display: grid;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: var(--gold-light);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-block-start: 2rem;
+    padding-block-start: 1.2rem;
+    border-block-start: 1px solid rgba(255, 255, 255, 0.09);
+    font-size: 0.82rem;
+}
+
+/* ---------- زر واتساب العائم ---------- */
+.whatsapp-fab {
+    position: fixed;
+    inset-inline-end: 1.25rem;
+    inset-block-end: 1.25rem;
+    z-index: 120;
+    inline-size: 58px;
+    block-size: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(37, 211, 102, 0.36);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-fab:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px rgba(37, 211, 102, 0.46);
+}
+
+.whatsapp-fab svg {
+    inline-size: 29px;
+    block-size: 29px;
+    fill: currentColor;
+}
+
+/* ---------- تجاوب ---------- */
+@media (max-width: 1020px) {
+    .hero-inner,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        max-inline-size: 620px;
+    }
+
+    .services-layout {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .service-nav {
+        position: static;
+    }
+
+    .service-nav ul {
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        overflow-x: auto;
+        padding-block-end: 0.4rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 780px) {
+    .nav,
+    .header-cta {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .grid--3,
+    .contact-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-item--wide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .service-card {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card img {
+        min-block-size: 200px;
+        max-block-size: 260px;
+        order: -1;
+    }
+}
+
+@media (max-width: 560px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        inline-size: min(100% - 1.5rem, var(--max-width));
+    }
+
+    .brand-mark {
+        inline-size: 40px;
+        block-size: 40px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+    .brand-sub {
+        font-size: 0.66rem;
+    }
+
+    .hero-actions .btn,
+    .cta-actions .btn {
+        inline-size: 100%;
+    }
+
+    .hero-badge {
+        inset-inline-start: 0;
+        inset-block-end: -0.75rem;
+    }
+
+    .about-figure::before {
+        display: none;
+    }
+
+    .service-shortcuts {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whatsapp-fab {
+        inset-inline-end: 1rem;
+        inset-block-end: 1rem;
+        inline-size: 52px;
+        block-size: 52px;
+    }
+
+    .whatsapp-fab svg {
+        inline-size: 25px;
+        block-size: 25px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
